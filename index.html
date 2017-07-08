@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Angular Material</title>
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="style/global.css">
 </head>
 <body ng-app="MyApp" layout="column">
 
@@ -12,10 +13,10 @@
     </md-toolbar>
 
     <div layout="row" class="container" flex>
-        <md-sidenav md-is-locked-open="true" class="lightblue">
+        <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
             Sidenav
         </md-sidenav>
-        <md-content id="content" class="lightgreen" flex>
+        <md-content id="content" flex>
             Content
         </md-content>
     </div>
