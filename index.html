@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="style/global.css">
 </head>
-<body ng-app="MyApp" layout="column">
+<body ng-app="MyApp" layout="column" ng-controller="UserController as ul">
 
     <md-toolbar>
         <h1>Angular Material Starter</h1>
@@ -15,41 +15,38 @@
     <div layout="row" class="container" flex>
         <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
             <md-list>
-                <md-list-item>
-                    <md-button>
-                        <md-icon md-svg-src="svg/avatar-1.svg" class="avatar"></md-icon>
-                        Tomas Bing
-                    </md-button>
-                </md-list-item>
-                <md-list-item>
-                    <md-button>
-                        <md-icon md-svg-src="svg/avatar-4.svg" class="avatar"></md-icon>
-                        Aaron Williams
+                <md-list-item ng-repeat="user in ul.users">
+                    <md-button ng-click="ul.selectUser(user)">
+                        <md-icon md-svg-src="{{user.avatar}}" class="avatar"></md-icon>
+                        {{user.name}}
                     </md-button>
                 </md-list-item>
             </md-list>
         </md-sidenav>
         <md-content id="content" flex>
-            <md-icon md-svg-src="svg/avatar-1.svg" class="avatar"></md-icon>
-            <h2>Tomas Bing</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat vulputate est non vulputate. Fusce venenatis quam ut erat dictum, sit amet lobortis ex gravida. Sed at arcu congue, aliquet nisl a, venenatis nulla. Fusce porta odio ac purus aliquet finibus. Fusce placerat pharetra nibh, vel faucibus lectus elementum ac. Quisque vel libero lacinia, tempor dolor ac, scelerisque enim.</p>
+            <md-icon md-svg-src="{{ul.selected.avatar}}" class="avatar"></md-icon>
+            <h2>{{ul.selected.name}}</h2>
+            <p>{{ul.selected.content}}</p>
+
+            <md-button class="share" md-no-ink ng-click="ul.share(ul.selected)">
+                <md-icon md-svg-icon="share"></md-icon>
+            </md-button>
         </md-content>
     </div>
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="users.js"></script>
+    <script src="user.service.js"></script>
+    <script src="user.controller.js"></script>
 
     <script type="text/javascript">
-        angular.module('MyApp',['ngMaterial'])
-            .run(function () {
-                console.log('MyApp is ready!')
+        angular.module('MyApp',['ngMaterial', 'users'])
+            .config(function ($mdIconProvider) {
+                $mdIconProvider.defaultIconSet('./svg/avatars.svg', 128);
+                $mdIconProvider.icon('share', './svg/share.svg', 24);
             })
     </script>
-    <style>
-        .red{background-color: red}
-        .lightblue{background-color: lightblue}
-        .lightgreen{background-color: lightgreen}
-    </style>
 </body>
 </html>
