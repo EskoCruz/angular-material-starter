@@ -6,7 +6,15 @@ html, body {
     padding: 0px;
 }
 
-/** Enabled Step 3... */
+/* Toolbar area */
+
+.menu {
+    background-color: transparent;
+    border: none;
+    height: 38px;
+    margin: 16px;
+    width: 36px;
+}
 
 md-toolbar h3 {
     margin: auto;
@@ -22,6 +30,23 @@ md-list-item > button {
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 5px;
+}
+
+#content .md-button.share {
+    background-color: transparent;
+    border: none;
+    width: 48px;
+    height: 48px;
+    margin: 8px auto 16px 0;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+#content .md-button.share > md-icon {
+    fill:black;
+    width:36px;
+    height:36px;
 }
 
 .avatar {

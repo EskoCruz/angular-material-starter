@@ -27,6 +27,7 @@
             vm.users        = [ ];
             vm.selectUser   = selectUser;
             vm.share        = share;
+            vm.toggleList   = toggleList;
 
             // Load all registered users
 
@@ -42,8 +43,12 @@
              * @param menuId
              */
             function selectUser ( user ) {
-                vm.selected =  user;
+                //vm.selected =  user;
                 vm.selected =  angular.isNumber(user) ? $scope.users[user] : user;
+            }
+            
+            function toggleList() {
+                $mdSidenav('left').toggle();
             }
 
             ////////////////
