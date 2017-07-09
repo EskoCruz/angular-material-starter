@@ -32,7 +32,7 @@
             <p>{{ul.selected.content}}</p>
 
             <md-button class="share" md-no-ink ng-click="ul.share(ul.selected)">
-                <md-icon md-svg-icon="share"></md-icon>
+                <md-icon md-svg-icon="share" aria-label="Share from {{ul.selected.name}}"></md-icon>
             </md-button>
         </md-content>
     </div>
@@ -47,10 +47,13 @@
 
     <script type="text/javascript">
         angular.module('MyApp',['ngMaterial', 'users'])
-            .config(function ($mdIconProvider) {
+            .config(function ($mdIconProvider, $mdThemingProvider) {
                 $mdIconProvider.defaultIconSet('./svg/avatars.svg', 128);
                 $mdIconProvider.icon('share', './svg/share.svg', 24);
                 $mdIconProvider.icon('menu', './svg/menu.svg', 24);
+                $mdThemingProvider.theme('default')
+                    .primaryPalette('brown')
+                    .accentPalette('orange');
             })
     </script>
 </body>
